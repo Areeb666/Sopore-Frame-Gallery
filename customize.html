@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customize Your Frame</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #e3ffe7, #d9e7ff);
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(to right, #ff6a00, #ee0979);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        nav {
+            margin-top: 10px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .customize-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .customize-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .customize-container label {
+            font-size: 18px;
+            margin-top: 10px;
+            display: block;
+        }
+
+        .customize-container input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 20px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .border-selection {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .border-option {
+            cursor: pointer;
+            border: 3px solid transparent;
+            border-radius: 10px;
+            transition: transform 0.3s ease, border 0.3s ease;
+        }
+
+        .border-option img {
+            display: block;
+            width: 100px;
+            height: 100px;
+            border-radius: 10px;
+        }
+
+        .border-option:hover {
+            transform: scale(1.1);
+        }
+
+        .border-option.selected {
+            border-color: #ff6a00;
+            transform: scale(1.1);
+        }
+
+        button {
+            background: linear-gradient(to right, #ff6a00, #ee0979);
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 20px;
+            font-size: 18px;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background: linear-gradient(to right, #ee0979, #ff6a00);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Customize Your Frame</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="cart.html">Cart</a>
+        </nav>
+    </header>
+    
+    <main>
+        <div class="customize-container">
+            <h2>Select Your Customization</h2>
+
+            <label>Select Border Style:</label>
+            <div class="border-selection">
+                <div class="border-option" data-name="Border 1" data-price="15" onclick="selectBorder(this)">
+                    <img src="images\frame4.jpeg" alt="Border 1">
+                    <p>Border 1</p>
+                </div>
+                <div class="border-option" data-name="Border 2" data-price="17" onclick="selectBorder(this)">
+                    <img src="images\frame2.jpeg" alt="Border 2">
+                    <p>Border 2</p>
+                </div>
+                <div class="border-option" data-name="Border 3" data-price="19" onclick="selectBorder(this)">
+                    <img src="images\frame3.jpeg" alt="Border 3">
+                    <p>Border 3</p>
+                </div>
+            </div>
+
+            <label>Enter Frame Length (in cm):</label>
+            <input type="number" id="length" placeholder="Enter Length">
+
+            <label>Enter Frame Breadth (in cm):</label>
+            <input type="number" id="breadth" placeholder="Enter Breadth">
+
+            <button onclick="addCustomToCart()">Add to Cart</button>
+        </div>
+    </main>
+
+    <script>
+        let selectedBorder = null;
+
+        function selectBorder(element) {
+            // Deselect all options
+            document.querySelectorAll('.border-option').forEach(option => option.classList.remove('selected'));
+
+            // Select the clicked option
+            element.classList.add('selected');
+
+            // Update selected border data
+            selectedBorder = {
+                name: element.getAttribute('data-name'),
+                price: parseFloat(element.getAttribute('data-price')),
+            };
+        }
+
+
+        function addCustomToCart() {
+            const length = parseFloat(document.getElementById('length').value);
+            const breadth = parseFloat(document.getElementById('breadth').value);
+
+            if (!selectedBorder) {
+                alert('Please select a border style.');
+                return;
+            }
+
+            if (!length || !breadth) {
+                alert('Please enter valid dimensions.');
+                return;
+            }
+            if (length<5 || breadth<5) {
+                alert('Enter dimensions greater than 5');
+                return;
+            }
+
+
+            const area = length * breadth;
+            
+            const customPrice = selectedBorder.price + (area/15); // Example pricing logic
+            
+
+            const customFrame = {
+                name: `Custom Frame (${selectedBorder.name}, ${length}x${breadth})`,
+                price: customPrice,
+            };
+
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.push(customFrame);
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            alert(`Custom Frame added to cart! Total Price: ₹${customPrice.toFixed(2)}`);
+            window.location.href = 'cart.html'; // Redirect to cart after adding to cart
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Frame Catalog</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(to right, #e0f7fa, #b2ebf2);
+      color: #333;
+    }
+    header {
+      background: linear-gradient(to right, #4db6ac, #00796b);
+      padding: 15px 0;
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+      color: white;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+    nav a:hover {
+      color: #ffd54f;
+    }
+    .frame-gallery {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 20px;
+    }
+    .frame-item {
+      margin: 15px;
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+      padding: 20px;
+      text-align: center;
+      color: #333;
+      width: 250px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .frame-item:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.5);
+    }
+    .frame-item img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+    .frame-item button {
+      background: linear-gradient(to right, #81c784, #4caf50);
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background 0.3s ease;
+    }
+    .frame-item button:hover {
+      background: linear-gradient(to right, #4caf50, #388e3c);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    Frame Catalog
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="cart.html">Cart</a>
+    </nav>
+  </header>
+  <div class="frame-gallery">
+    <div class="frame-item">
+      <img src="images\frame1.jpeg" alt="Frame 1">
+      <h3>Design 1</h3>
+      <p>₹  75</p>
+      <button onclick="addToCart('Design 1', 75)">Add to Cart</button>
+    </div>
+    <div class="frame-item">
+      <img src="images\frame2.jpeg" alt="Frame 2">
+      <h3>Design 2</h3>
+      <p>₹75</p>
+      <button onclick="addToCart('Design 2', 75)">Add to Cart</button>
+    </div>
+    <div class="frame-item">
+      <h3>Customize Your Frame</h3>
+      <button onclick="window.location.href='customize.html'">Customize</button>
+    </div>
+  </div>
+  <script>
+    function addToCart(name, price) {
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      cart.push({ name, price });
+      localStorage.setItem('cart', JSON.stringify(cart));
+      alert(`${name} has been added to your cart.`);
+    }
+  </script>
+</body>
+</html>
