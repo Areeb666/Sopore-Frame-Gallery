@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Sopore Frame Galaxy </title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #a699c4, #d5bef6);
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(to right, #4facfe, #00f2fe);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            margin-top: 10px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+            font-size: 1.2em;
+            transition: color 0.3s;
+            
+        }
+
+        nav a:hover {
+            color: #ffcc00;
+        }
+        span {
+            color: rgb(255, 255, 255);
+            background-color: #0026ff37;
+        }
+        span:hover{
+            color: blue;
+            background-color: #ff0000;
+            
+        }
+
+        .container {
+            text-align: center;
+            margin: 50px auto;
+        }
+
+        .container h1 {
+            font-size: 2.5em;
+            color: #333;
+        }
+
+        .container p {
+            font-size: 1.2em;
+            color: #555;
+        }
+
+        .hero {
+            background: linear-gradient(to right, #74dfeb, #acb6e5);
+            padding: 50px;
+            border-radius: 10px;
+            margin: 20px auto;
+            box-shadow: 0 4px 10px rgba(10, 135, 218, 0.368);
+            animation: fadeIn 4.5s;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background: #333;
+            color: white;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Sopore Frame Gallery</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="catalog.html">Frames</a>
+            <a href="cart.html">Cart</a>
+            <a href="contact.html">Contact Us</a>
+            <a href="about.html"><span>About the Creator</span></a>
+        </nav>
+    </header>
+    
+    <div class="container">
+        <div class="hero">
+            <h1>Your Personalized Frame Store</h1>
+            <p>Explore, customize, and create your own unique frames.</p>
+        </div>
+    </div>
+    <footer>
+        © 2024 Sopore Frame Gallery - Crafted with care by Areeb Altaf
+    </footer>
+</body>
+</html>
