@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checkout</title>
     <style>
+        /* Styling remains the same */
         body {
             font-family: 'Arial', sans-serif;
             background: linear-gradient(to right, #56ccf2, #2f80ed);
@@ -52,10 +53,6 @@
             background: #218838;
         }
 
-        p {
-            color: green;
-            display: none;
-        }
         nav {
             margin-top: 10px;
         }
@@ -81,7 +78,8 @@
                 <a href="index.html">Home</a>
             </nav>
         </h1>
-        <form id="checkoutForm">
+        <!-- Connect the form to FormSubmit -->
+        <form action="https://formsubmit.co/your@email.com" method="POST">
             <div class="form-group">
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" required>
@@ -98,52 +96,10 @@
                 <label for="remarks">Remarks (Optional):</label>
                 <textarea id="remarks" name="remarks"></textarea>
             </div>
-            <p id="orderStatus">Order Placed! You will be contacted soon.</p>
+            <input type="hidden" name="_next" value="https://yourwebsite.com/thank-you.html">
+            <input type="hidden" name="_subject" value="New Order Submission!">
             <button class="btn" type="submit">Place Order</button>
         </form>
     </div>
-
-    <script>
-        document.getElementById('checkoutForm').addEventListener('submit', async function (e) {
-            e.preventDefault(); // Prevent form from refreshing the page
-
-            const customerDetails = {
-                name: document.getElementById('name').value,
-                address: document.getElementById('address').value,
-                contact: document.getElementById('contact').value,
-                remarks: document.getElementById('remarks').value
-            };
-
-            // Optional: Additional validation if needed
-            if (!customerDetails.name || !customerDetails.address || !customerDetails.contact) {
-                alert("Please fill in all required fields.");
-                return;
-            }
-
-            console.log('Sending customer details:', customerDetails); // Debugging log
-
-            try {
-                const response = await fetch('https://flask-backend-1gef.onrender.com/place-order', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(customerDetails)
-                });
-
-                if (response.ok) {
-                    const result = await response.json();
-                    alert(result.message);
-                    document.getElementById("checkoutForm").reset(); // Clear the form
-                } else {
-                    const errorData = await response.json();
-                    alert(`Failed to place order.  Please try again later.`);
-                }
-            } catch (error) {
-                console.error('Error:', error);
-                alert('An error occurred while placing the order.');
-            }
-        });
-    </script>
 </body>
 </html>
