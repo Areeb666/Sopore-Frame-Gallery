@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Checkout</title>
+    <title>Message</title>
     <style>
-        /* Styling remains the same */
+        
         body {
             font-family: 'Arial', sans-serif;
             background: linear-gradient(to right, #56ccf2, #2f80ed);
@@ -73,9 +73,13 @@
 </head>
 <body>
     <div class="container">
-        <h1>Checkout
+        <h1>Message us :
             <nav>
                 <a href="index.html">Home</a>
+                
+                <a href="catalog.html">Frames</a>
+                
+                <a href="contact.html">contact us</a>
             </nav>
         </h1>
         <!-- Connect the form to FormSubmit -->
@@ -93,12 +97,12 @@
                 <input type="text" id="contact" name="contact" required>
             </div>
             <div class="form-group">
-                <label for="remarks">Remarks (Optional):</label>
-                <textarea id="remarks" name="remarks"></textarea>
+                <label for="message">Message :</label>
+                <textarea id="message" name="message"></textarea>
             </div>
             <input type="hidden" name="_next" value="https://areeb666.github.io/Sopore-Frame-Gallery/thank-you.html">
-            <input type="hidden" name="_subject" value="New Order Submission!">
-            <button class="btn" type="submit">Place Order</button>
+            <input type="hidden" name="_subject" value="New Message!">
+            <button class="btn" type="submit">Send</button>
         </form>
     </div>
 </body>
