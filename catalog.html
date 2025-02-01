@@ -8,11 +8,11 @@
     body {
       margin: 0;
       font-family: 'Arial', sans-serif;
-      background: linear-gradient(to right, #e0f7fa, #b2ebf2);
+      background: linear-gradient(to right, #e0f4fa, #bfb2f2);
       color: #333;
     }
     header {
-      background: linear-gradient(to right, #4db6ac, #00796b);
+      background: linear-gradient(to right, #0033ffb1, #00ccff);
       padding: 15px 0;
       text-align: center;
       font-size: 24px;
@@ -45,11 +45,34 @@
       text-align: center;
       color: #333;
       width: 250px;
+      height:auto;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .frame-item img {
+      height:auto;
+      
+    }
+    .Customize{
+      margin-top: 160px;
+      margin: 50px;
+      background: #000000;
+      border-radius: 200px;
+      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+      padding: 20px;
+      text-align: center;
+      color: #ff4000;
+      height: fit-content;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+
     }
     .frame-item:hover {
       transform: scale(1.05);
       box-shadow: 0 10px 15px rgba(0, 0, 0, 0.5);
+    
+    }
+    .Customize:hover {
+      transform: scale(1.06);
+      box-shadow: 0 11px 16px rgba(0, 0, 0, 0.5);
     }
     .frame-item img {
       width: 100%;
@@ -57,7 +80,17 @@
       margin-bottom: 15px;
     }
     .frame-item button {
-      background: linear-gradient(to right, #81c784, #4caf50);
+      background: linear-gradient(to right, #7700ff, #00b3ff);
+      color: white;
+      padding: 10px 15px;
+      border:dotted;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background 0.3s ease;
+    }
+    .Customize button {
+      background: linear-gradient(to right, #ff6a00, #ee0979);
       color: white;
       padding: 10px 15px;
       border: none;
@@ -67,33 +100,40 @@
       transition: background 0.3s ease;
     }
     .frame-item button:hover {
-      background: linear-gradient(to right, #4caf50, #388e3c);
+      background: linear-gradient(to right, #0077ff, #2600ffdd);
+    }
+    .Customize button:hover {
+      background: linear-gradient(to right, #ee0979, #ff6a00);
     }
   </style>
 </head>
 <body>
   <header>
-    Frame Catalog
+    <h1>Frames</h1>
     <nav>
       <a href="index.html">Home</a>
-      <a href="cart.html">Cart</a>
+      <a href="checkout.html">Message us</a>
+      <a href="contact.html">contact us</a>
     </nav>
   </header>
   <div class="frame-gallery">
     <div class="frame-item">
-      <img src="frame1.jpeg" alt="Frame 1">
+      <img src="images/Frame 2.jpg" alt="Frame 1" >
       <h3>Design 1</h3>
-      <p>₹  75</p>
-      <button onclick="addToCart('Design 1', 75)">Add to Cart</button>
+      <p>A4</p>
+      
+      <button onclick="window.location.href='checkout.html'">Next</button>
     </div>
     <div class="frame-item">
-      <img src="frame2.jpeg" alt="Frame 2">
+      <img src="images\frame 1.jpg" alt="Frame 2">
       <h3>Design 2</h3>
-      <p>₹75</p>
-      <button onclick="addToCart('Design 2', 75)">Add to Cart</button>
+      <p>12 Inches X 18 Inches</p>
+      
+
+      <button onclick="window.location.href='checkout.html'">Next</button>
     </div>
-    <div class="frame-item">
-      <h3>Customize Your Frame</h3>
+    <div class="Customize">
+      <h3>Customize Your Frames</h3>
       <button onclick="window.location.href='customize.html'">Customize</button>
     </div>
   </div>
